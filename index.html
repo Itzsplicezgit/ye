@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ECA Soccer Tournament</title>
-<link rel="icon" href="67.png" type="image/png">
+  <title>Rules - ECA Soccer Tournament</title>
+  <link rel="icon" href="67.png" type="image/png">
 
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
@@ -23,7 +23,6 @@
       background: #121212;
     }
 
-
     body::before {
       content: "";
       position: fixed;
@@ -33,7 +32,6 @@
       z-index: -1;
     }
 
-
     header {
       background: #121212;
       padding: 18px 40px;
@@ -41,6 +39,7 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #1f1f1f;
+      z-index: 2;
     }
 
     header h2 {
@@ -64,43 +63,52 @@
       transform: scale(1.12);
     }
 
-
     main {
       flex: 1;
       display: flex;
-      align-items: center;
-      padding-left: 40px;
+      justify-content: center;
+      padding: 60px 40px;
     }
 
-    .infoBox {
-      width: 50%;
+    .rules-container {
+      width: 100%;
+      max-width: 900px;
       background: rgba(18, 18, 18, 0.9);
       border: 1px solid #1f1f1f;
       border-radius: 16px;
-      padding: 50px;
+      padding: 35px 40px;
     }
 
-    .infoBox h1 {
-      font-size: 44px;
-      margin-bottom: 20px;
+    .rules-container h1 {
+      font-size: 28px;
       font-weight: 700;
+      margin-bottom: 20px;
+      text-align: center;
     }
 
-    .meta {
-      font-size: 16px;
-      color: #aaaaaa;
-      margin-bottom: 30px;
-      font-weight: 500;
-    }
-
-    .desc {
+    .rules-container h3 {
       font-size: 18px;
-      line-height: 1.7;
-      color: #cccccc;
-      max-width: 520px;
-      font-weight: 400;
+      margin-top: 28px;
+      margin-bottom: 10px;
+      color: #ffffff;
     }
 
+    .rules-container ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .rules-container li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      color: #cccccc;
+    }
+
+    .rules-container li::before {
+      content: "• ";
+      color: #ffffff;
+      font-weight: bold;
+    }
 
     footer {
       background: #121212;
@@ -118,20 +126,55 @@
   <header>
     <h2>ECA Soccer Cup</h2>
     <nav>
-      <a href="index.html" class="active">Home</a>
+      <a href="index.html">Home</a>
       <a href="winnings.html">Winnings</a>
-      <a href="rules.html">Rules</a>
+      <a href="rules.html" class="active">Rules</a>
       <a href="https://forms.gle/3UkHYYNG3S9Bfzdy7">Register</a>
     </nav>
   </header>
 
   <main>
-    <div class="infoBox">
-      <h1>ECA Soccer Tournament</h1>
-      <p class="meta">📅 Feb 2, 2026 - Feb 13 • 📍 Location: Grass Near C4 Building</p>
-      <p class="desc">
-A soccer tournament starting with four teams of five players. Teams are drafted using a wheel. Medals, trophies, and awards for MVP, most goals, and most assists will be given. Team sizes adjust based on how many participants the event will get.
-      </p>
+    <div class="rules-container">
+      <h1>Tournament Rules</h1>
+
+      <h3>General</h3>
+      <ul>
+        <li>All players must be officially registered before the tournament begins.</li>
+        <li>Teams consist of five players on the field.</li>
+        <li>Matches will start at the scheduled time. Late teams may forfeit.</li>
+        <li>Cleats NOT ALLOWED!</li>
+      </ul>
+
+      <h3>Gameplay</h3>
+      <ul>
+        <li>Standard soccer rules apply unless stated otherwise.</li>
+        <li>Unsportsmanlike behavior will not be tolerated.</li>
+        <li>Referee decisions are final.</li>
+      </ul>
+
+      <h3>Substitutions</h3>
+      <ul>
+        <li>Unlimited substitutions are allowed during stoppages.</li>
+        <li>Substitutions must be approved by the referee.</li>
+      </ul>
+
+      <h3>Discipline</h3>
+      <ul>
+        <li>Yellow cards act as warnings.</li>
+        <li>Two yellow cards equal a red card.</li>
+        <li>Red cards result in immediate removal from the match.</li>
+      </ul>
+
+      <h3>Advancement</h3>
+      <ul>
+        <li>Ties may be decided by penalty shootouts.</li>
+      </ul>
+
+      <h3>Final Notes</h3>
+      <ul>
+        <li>Organizers reserve the right to modify rules if necessary.</li>
+        <li>Respect players, referees, and staff at all times.</li>
+      </ul>
     </div>
   </main>
 
