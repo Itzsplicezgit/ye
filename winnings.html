@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Winnings - School Soccer Tournament</title>
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: #e5e5e5;
+      background: #121212;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url("background.png") center/cover no-repeat;
+      filter: blur(10px) brightness(0.35);
+      z-index: -1;
+    }
+
+
+    header {
+      background: #121212;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #1f1f1f;
+      z-index: 2;
+    }
+
+    header h2 {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    nav a {
+      color: #b3b3b3;
+      text-decoration: none;
+      margin-left: 28px;
+      font-size: 15px;
+      display: inline-block;
+      transition: transform 0.2s ease, color 0.2s ease;
+      font-weight: 500;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #ffffff;
+      transform: scale(1.12);
+    }
+
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+    }
+
+    .match-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .team {
+      background: rgba(18, 18, 18, 0.9);
+      border: 1px solid #1f1f1f;
+      border-radius: 16px;
+      padding: 25px;
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .team h2 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .players {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .player {
+      width: 80px;
+      text-align: center;
+    }
+
+    .player img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid #1f1f1f;
+      margin-bottom: 6px;
+    }
+
+    .player-name {
+      font-size: 14px;
+      color: #e5e5e5;
+      font-weight: 500;
+    }
+
+
+    .score {
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffffff;
+      text-align: center;
+      min-width: 120px;
+    }
+
+
+    footer {
+      background: #121212;
+      border-top: 1px solid #1f1f1f;
+      text-align: center;
+      padding: 14px;
+      font-size: 13px;
+      color: #888888;
+      font-weight: 400;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h2>School Cup</h2>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="winnings.html" class="active">Winnings</a>
+      <a href="https://forms.gle/3UkHYYNG3S9Bfzdy7">Register</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="match-container">
+
+
+      <div class="team">
+        <h2>Team 1</h2>
+        <div class="players">
+          <div class="player">
+            <img src="example.png" alt="Player 1">
+            <p class="player-name">Player 1</p>
+          </div>
+          <div class="player">
+            <img src="example.png" alt="Player 2">
+            <p class="player-name">Player 2</p>
+          </div>
+          <div class="player">
+            <img src="example.png" alt="Player 3">
+            <p class="player-name">Player 3</p>
+          </div>
+          <div class="player">
+            <img src="example.png" alt="Player 4">
+            <p class="player-name">Player 4</p>
+          </div>
+          <div class="player">
+            <img src="example.png" alt="Player 5">
+            <p class="player-name">Player 5</p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="score">
+        Game Soon!
+      </div>
+
+
+      <div class="team">
+        <h2>Team 2</h2>
+        <div class="players">
+          <div class="player">
+            <img src="example.png" alt="Player 1">
+            <p class="player-name">Player 1</p>
+          </div>
+          <div class="player">
+            <img src="example.png" alt="Player 2">
+            <p class="player-name">Player 2</p>
+          </div>
+          <div class="player">
+            <img src="example.png" alt="Player 3">
+            <p class="player-name">Player 3</p>
+          </div>
+          <div class="player">
+            <img src="example.png" alt="Player 4">
+            <p class="player-name">Player 4</p>
+          </div>
+          <div class="player">
+            <img src="example.png" alt="Player 5">
+            <p class="player-name">Player 5</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    
+  </footer>
+
+</body>
+</html>
