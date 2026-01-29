@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Winnings - ECA Soccer Tournament</title>
-<link rel="icon" href="67.png" type="image/png">
-
+  <link rel="icon" href="67.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-
   <style>
     * {
       margin: 0;
@@ -31,7 +29,6 @@
       filter: blur(10px) brightness(0.35);
       z-index: -1;
     }
-
 
     header {
       background: #121212;
@@ -64,7 +61,6 @@
       transform: scale(1.12);
     }
 
-
     main {
       flex: 1;
       display: flex;
@@ -89,6 +85,9 @@
       padding: 25px;
       flex: 1;
       min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .team h2 {
@@ -99,14 +98,14 @@
     }
 
     .players {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Create 3 columns */
       gap: 12px;
+      width: 100%;
+      justify-items: center; /* Center player items within the grid */
     }
 
     .player {
-      width: 80px;
       text-align: center;
     }
 
@@ -125,7 +124,6 @@
       font-weight: 500;
     }
 
-
     .score {
       font-size: 28px;
       font-weight: 700;
@@ -133,7 +131,6 @@
       text-align: center;
       min-width: 120px;
     }
-
 
     footer {
       background: #121212;
@@ -161,61 +158,66 @@
   <main>
     <div class="match-container">
 
-
       <div class="team">
         <h2>Team 1</h2>
         <div class="players">
           <div class="player">
-            <img src="example.png" alt="Player 1">
-            <p class="player-name">Player 1</p>
+            <img src="pics/alexander.png" alt="Player 1">
+            <p class="player-name">Captain: Alexander</p>
           </div>
           <div class="player">
-            <img src="example.png" alt="Player 2">
-            <p class="player-name">Player 2</p>
+            <img src="pics/elian.png" alt="Player 2">
+            <p class="player-name">Elian</p>
           </div>
           <div class="player">
-            <img src="example.png" alt="Player 3">
-            <p class="player-name">Player 3</p>
+            <img src="pics/basic.png" alt="Player 3">
+            <p class="player-name">Jimmy</p>
           </div>
           <div class="player">
-            <img src="example.png" alt="Player 4">
-            <p class="player-name">Player 4</p>
+            <img src="pics/basic.png" alt="Player 4">
+            <p class="player-name">Yosgar Mariano</p>
           </div>
           <div class="player">
-            <img src="example.png" alt="Player 5">
-            <p class="player-name">Player 5</p>
+            <img src="pics/basic.png" alt="Player 5">
+            <p class="player-name">Giovanni Lopez</p>
+          </div>
+          <div class="player">
+            <img src="pics/basic.png" alt="Player 6">
+            <p class="player-name">Jacob Rodriguez</p>
           </div>
         </div>
       </div>
 
-
       <div class="score">
-        Game Soon!
+        Next Game Feb 2: Monday
       </div>
-
 
       <div class="team">
         <h2>Team 2</h2>
         <div class="players">
           <div class="player">
-            <img src="example.png" alt="Player 1">
-            <p class="player-name">Player 1</p>
+            <img src="pics/gio.png" alt="Player 1">
+            <p class="player-name">Captain: Gio</p>
           </div>
           <div class="player">
-            <img src="example.png" alt="Player 2">
-            <p class="player-name">Player 2</p>
+            <img src="pics/basic.png" alt="Player 2">
+            <p class="player-name">Ayoube Aguirre</p>
           </div>
           <div class="player">
-            <img src="example.png" alt="Player 3">
-            <p class="player-name">Player 3</p>
+            <img src="pics/justin.png" alt="Player 3">
+            <p class="player-name">Justin Martinez</p>
           </div>
           <div class="player">
-            <img src="example.png" alt="Player 4">
-            <p class="player-name">Player 4</p>
+            <img src="pics/luis.png" alt="Player 4">
+            <p class="player-name">Luis Fuentes</p>
           </div>
           <div class="player">
-            <img src="example.png" alt="Player 5">
-            <p class="player-name">Player 5</p>
+            <img src="pics/daniel.png" alt="Player 5">
+            <p class="player-name">Daniel Mendiola</p>
+          </div>
+          <div class="player">
+            <img src="pics/basic.png" alt="Player 6">
+            <p class="player-name">Alberto Gonzalez</p>
           </div>
         </div>
       </div>
