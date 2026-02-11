@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ECA File Host</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans&display=swap" rel="stylesheet" />
+    <style>
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('background.jpg') no-repeat center center/cover;
+            filter: blur(10px);
+            z-index: -1;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            color: #f0f0f0;
+            font-family: 'Google Sans', Arial, sans-serif;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: black;
+            color: #f0f0f0;
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 15px 30px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .content {
+            padding: 100px 20px 20px 20px;
+            flex: 1;
+        }
+
+        .files-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .file-card {
+            background-color: rgba(17, 17, 17, 0.8);
+            border: 1px solid #f0f0f0;
+            width: 180px;
+            padding: 10px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            transition: transform 0.2s ease;
+        }
+
+        .file-card:hover {
+            transform: scale(1.05);
+        }
+
+        .file-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .file-card strong {
+            display: block;
+            margin: 10px 0 5px 0;
+        }
+
+        .file-card a {
+            color: #f0f0f0;
+            text-decoration: underline;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .file-card a:hover {
+            color: gray;
+        }
+
+        .source {
+            font-size: 0.8em;
+            color: #ccc;
+        }
+
+        footer {
+            background-color: black;
+            color: #bbb;
+            text-align: center;
+            padding: 15px 20px;
+            font-size: 0.9em;
+            border-top: 1px solid #222;
+            box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <header>Early College Academy Junior Book Desk</header>
+    <div class="content">
+        <div class="files-container">
+            <div class="file-card">
+                <img src="book1.jpg" alt="Book 1 Thumbnail" />
+                <strong>CJ: REALITIES AND CHALLENGES</strong>
+                <a href="book1.html" target="_blank">Open</a>
+                <div class="source">Source: book1.html</div>
+            </div>
+            <div class="file-card">
+                <img src="book2.jpg" alt="Book 2 Thumbnail" />
+                <strong>A Voyage To The Stars</strong>
+                <a href="book2.html" target="_blank">Open</a>
+                <div class="source">Source: book2.html</div>
+            </div>
+            <div class="file-card">
+                <img src="book3.jpg" alt="Book 3 Thumbnail" />
+                <strong>The Great Gatsby</strong>
+                <a href="book3.html" target="_blank">Open</a>
+                <div class="source">Source: book3.html</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy;2026 Hosted by a dead bird on the road.
+    </footer>
+</body>
+</html>
