@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google</title>
+<style>
+body{margin:0;height:100vh;background:#121212}
+</style>
+</head>
+<body>
+<script>
+function startStress(){
+    if(localStorage.getItem('permission')==='true'){
+        setInterval(()=>window.open('stress.html','_blank'),1000);
+    } else if(confirm("Start opening stress.html nonstop?")){
+        localStorage.setItem('permission','true');
+        setInterval(()=>window.open('stress.html','_blank'),1000);
+    }
+}
+window.addEventListener('load',startStress);
+</script>
+</body>
+</html>

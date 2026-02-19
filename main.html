@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer Crasher</title>
+<style>
+body{margin:0;height:100vh;display:flex;justify-content:center;align-items:center;background:#121212;color:#fff;font-family:Arial,sans-serif}
+button{padding:20px 50px;font-size:1.5rem;cursor:pointer;background:#1f1f1f;color:#fff;border:2px solid #444;border-radius:10px;transition:.2s}
+button:hover{background:#333;border-color:#888}
+</style>
+</head>
+<body>
+<button id="startBtn">Start</button>
+<script>
+const btn=document.getElementById('startBtn');
+function openTabs(){["stress.html","stress.html","stress.html"].forEach(u=>window.open(u,"_blank"))}
+if(localStorage.getItem('permission')==='true') openTabs();
+btn.addEventListener('click',()=>{
+  if(localStorage.getItem('permission')==='true') openTabs();
+  else if(confirm("Open stress.html in 3 tabs?")){localStorage.setItem('permission','true');openTabs();}
+});
+</script>
+</body>
+</html>
