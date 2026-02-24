@@ -4,105 +4,209 @@
 <meta charset="UTF-8" />
 <title>FBI Database - Jessie</title>
 <link rel="icon" type="image/png" href="fbi.png" />
+
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f4f4f4;
-    color: #1d3557;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  .header {
-    background: #0a0a0a;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    font-weight: bold;
-    letter-spacing: 2px;
-    font-size: 28px;
-  }
-  .subheader {
-    background: #1d3557;
-    color: white;
-    padding: 10px 20px;
-    font-size: 14px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  .container {
-    padding: 20px;
-    max-width: 900px;
-    margin: 0 auto 40px;
-    width: 90%;
-    flex: 1 0 auto;
-  }
-  .search-box {
-    margin-bottom: 20px;
-    display: block;
-    width: 100%;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  input[type="search"] {
-    width: 100%;
-    padding: 10px 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  ul.file-list {
-    list-style: none;
-    padding-left: 0;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  ul.file-list li {
-    padding: 12px 16px;
-    background: white;
-    margin-bottom: 12px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 16px;
-    border-radius: 5px;
-  }
-  ul.file-list li a.file-link {
-    color: #1d3557;
-    text-decoration: none;
-    flex-grow: 1;
-    overflow-wrap: break-word;
-    margin-right: 20px;
-  }
-  ul.file-list li a.file-link:hover {
-    text-decoration: underline;
-  }
-  a.download-link {
-    font-size: 14px;
-    color: #1d3557;
-    text-decoration: none;
-    border: 1px solid #1d3557;
-    padding: 6px 12px;
-    border-radius: 4px;
-    white-space: nowrap;
-    transition: background 0.3s, color 0.3s;
-  }
-  a.download-link:hover {
-    background: #1d3557;
-    color: white;
-  }
-  footer {
-    background: #0a0a0a;
-    color: white;
-    text-align: center;
-    font-size: 12px;
-    padding: 10px 0;
-    flex-shrink: 0;
-  }
+body, html {
+  margin: 0;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f9f9f9;
+  color: #0f0f0f;
+  overflow: hidden;
+}
+
+#captchaOverlay {
+  position: fixed;
+  top: 52px;
+  left: 0;
+  right: 0;
+  bottom: 40px;
+  background: white;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#captchaBox {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 30px 40px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  background: #fff;
+}
+
+#captchaBox label {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#captchaBox input[type="checkbox"] {
+  margin-right: 15px;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+#captchaText {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #444;
+}
+
+body.loaded {
+  overflow: auto;
+  background: #f9f9f9;
+}
+
+.header {
+  background: #0a0a0a;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 26px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+}
+
+.subheader {
+  background: #1d3557;
+  color: white;
+  padding: 8px;
+  text-align: center;
+  font-size: 13px;
+  position: fixed;
+  top: 52px;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+}
+
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 110px auto 60px auto;
+  flex: 1;
+  display: none;
+}
+
+.container.visible {
+  display: block;
+}
+
+.search-box {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 25px auto;
+  display: block;
+}
+
+input[type="search"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.video-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.video-card:hover {
+  transform: scale(1.03);
+}
+
+.thumbnail {
+  width: 100%;
+  height: 180px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.thumbnail img,
+.thumbnail video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnail audio {
+  width: 90%;
+}
+
+.thumbnail iframe {
+  width: 100%;
+  height: 180px;
+  border: none;
+}
+
+.video-info {
+  padding: 12px;
+}
+
+.video-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #0f0f0f;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.video-title:hover {
+  text-decoration: underline;
+}
+
+.download-link {
+  font-size: 13px;
+  color: #1d3557;
+  text-decoration: none;
+  border: 1px solid #1d3557;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.download-link:hover {
+  background: #1d3557;
+  color: white;
+}
+
+footer {
+  background: #0a0a0a;
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+}
 </style>
 </head>
 <body>
@@ -110,7 +214,15 @@
 <div class="header">FBI Database</div>
 <div class="subheader">Official Archive Repository – Public Viewing Portal / Jessie Files</div>
 
-<div class="container">
+<div id="captchaOverlay">
+  <div id="captchaBox">
+    <label><input type="checkbox" id="captchaCheck" /> I'm not a robot</label>
+    <div id="captchaText">Please verify you are human to continue.</div>
+  </div>
+</div>
+
+<div class="container" id="mainContainer">
+
   <input
     type="search"
     id="searchInput"
@@ -118,73 +230,180 @@
     placeholder="Search files by name or type..."
     oninput="filterFiles()"
   />
-  <ul id="fileList" class="file-list"></ul>
+
+  <div id="videoGrid" class="video-grid"></div>
+
 </div>
 
 <footer>© FBI — Federal Bureau of Investigation. All trademarks and rights reserved.</footer>
 
+<audio id="themeAudio" src="theme.mp3" preload="auto"></audio>
+
 <script>
-    const files = [
-      { name: "deaththreat.png", type: "document", url: "files/deaththreat.png" },
-      { name: "controller.png", type: "image", url: "files/controller.png" },
-      { name: "job.png", type: "image", url: "files/job.png" },
-      { name: "dih.png", type: "image", url: "files/dih.png" },
-      { name: "drank.png", type: "image", url: "files/drank.png" },
-      { name: "homo.png", type: "image", url: "files/homo.png" },
-      { name: "goon.png", type: "image", url: "files/goon.png" },
-      { name: "describingviticmsdeath.png", type: "image", url: "files/describingviticmsdeath.png" },
-      { name: "email1.png", type: "image", url: "files/email1.png" },
-      { name: "culprit.png", type: "image", url: "files/culprit.png" },
-      { name: "email2.png", type: "image", url: "files/email2.png" },
-      { name: "cat.png", type: "image", url: "files/cat.png" },
-      { name: "sahur.png", type: "image", url: "files/sahur.png" },
-      { name: "jalex.png", type: "image", url: "files/jalex.png" },
-      { name: "nerd.png", type: "image", url: "files/nerd.png" },
-      { name: "Case Logs.txt", type: "document", url: "files/caselogs.txt" }
-    ];
+const files = [
+  { name: "video1.mp4", type: "video", url: "files/video1.mp4" },
+  { name: "video2.mp4", type: "video", url: "files/video2.mp4" },
+  { name: "privateisland.png", type: "image", url: "files/privateisland.png" },
+  { name: "privateisland2.png", type: "image", url: "files/privateisland2.png" },
+  { name: "privateisland3.png", type: "image", url: "files/privateisland3.png" },
+  { name: "privateisland4.png", type: "image", url: "files/privateisland4.png" },
+  { name: "nah.png", type: "image", url: "files/nah.png" },
+  { name: "xxxcard.png", type: "image", url: "files/xxxcard.png" },
+  { name: "dungeon.png", type: "image", url: "files/dungeon.png" },
+  { name: "dti.png", type: "image", url: "files/dti.png" },
+  { name: "boxing.png", type: "image", url: "files/boxing.png" },
+  { name: "post.png", type: "image", url: "files/post.png" },
+  { name: "lastwords.png", type: "image", url: "files/lastwords.png" },
+  { name: "cat2.png", type: "image", url: "files/cat2.png" },
+  { name: "cat3.png", type: "image", url: "files/cat3.png" },
+  { name: "blue.png", type: "image", url: "files/blue.png" },
+  { name: "axe.png", type: "image", url: "files/axe.png" },
+  { name: "chicken.png", type: "image", url: "files/chicken.png" },
+  { name: "ther.png", type: "image", url: "files/ther.png" },
+  { name: "computer.png", type: "image", url: "files/computer.png" },
+  { name: "virus.png", type: "image", url: "files/virus.png" },
+  { name: "neon.png", type: "image", url: "files/neon.png" },
+  { name: "banned.png", type: "image", url: "files/banned.png" },
+  { name: "playwhatagain.png", type: "image", url: "files/playwhatagain.png" },
+  { name: "water.png", type: "image", url: "files/water.png" },
+  { name: "cat4.png", type: "image", url: "files/cat4.png" },
+  { name: "roblox.png", type: "image", url: "files/roblox.png" },
+  { name: "bottles.png", type: "image", url: "files/bottles.png" },
+  { name: "video.png", type: "image", url: "files/video.png" },
+  { name: "pole.png", type: "image", url: "files/pole.png" },
+  { name: "notthatguy.png", type: "image", url: "files/notthatguy.png" },
+  { name: "wtf.png", type: "image", url: "files/wtf.png" },
+  { name: "deaththreat.png", type: "image", url: "files/deaththreat.png" },
+  { name: "controller.png", type: "image", url: "files/controller.png" },
+  { name: "job.png", type: "image", url: "files/job.png" },
+  { name: "dih.png", type: "image", url: "files/dih.png" },
+  { name: "drank.png", type: "image", url: "files/drank.png" },
+  { name: "homo.png", type: "image", url: "files/homo.png" },
+  { name: "goon.png", type: "image", url: "files/goon.png" },
+  { name: "describingviticmsdeath.png", type: "image", url: "files/describingviticmsdeath.png" },
+  { name: "email1.png", type: "image", url: "files/email1.png" },
+  { name: "culprit.png", type: "image", url: "files/culprit.png" },
+  { name: "email2.png", type: "image", url: "files/email2.png" },
+  { name: "cat.png", type: "image", url: "files/cat.png" },
+  { name: "sahur.png", type: "image", url: "files/sahur.png" },
+  { name: "jalex.png", type: "image", url: "files/jalex.png" },
+  { name: "nerd.png", type: "image", url: "files/nerd.png" },
+  { name: "Case Logs.txt", type: "document", url: "files/caselogs.txt" }
+];
 
-  const fileList = document.getElementById("fileList");
-  const searchInput = document.getElementById("searchInput");
+const videoGrid = document.getElementById("videoGrid");
+const mainContainer = document.getElementById("mainContainer");
+const captchaOverlay = document.getElementById("captchaOverlay");
+const captchaCheck = document.getElementById("captchaCheck");
+const themeAudio = document.getElementById("themeAudio");
 
-  function createListItem(file) {
-    const li = document.createElement("li");
-    li.dataset.name = file.name.toLowerCase();
-    li.dataset.type = file.type.toLowerCase();
+function createCard(file) {
+  const card = document.createElement("div");
+  card.className = "video-card";
+  card.dataset.name = file.name.toLowerCase();
+  card.dataset.type = file.type.toLowerCase();
 
+  const thumbnail = document.createElement("div");
+  thumbnail.className = "thumbnail";
+
+  if (file.type === "video") {
+    const video = document.createElement("video");
+    video.src = file.url;
+    video.controls = true;
+
+    video.addEventListener("play", () => {
+      if (!themeAudio.paused) themeAudio.pause();
+    });
+    video.addEventListener("pause", () => {
+      if (themeAudio.paused) themeAudio.play().catch(() => {});
+    });
+    video.addEventListener("ended", () => {
+      if (themeAudio.paused) themeAudio.play().catch(() => {});
+    });
+
+    thumbnail.appendChild(video);
+  } else if (file.type === "audio") {
+    const audio = document.createElement("audio");
+    audio.src = file.url;
+    audio.controls = true;
+
+    // Stop theme audio if an mp3 is played
+    audio.addEventListener("play", () => {
+      themeAudio.pause();
+      themeAudio.currentTime = 0;
+    });
+
+    thumbnail.appendChild(audio);
+  } else if (file.type === "image") {
     const link = document.createElement("a");
     link.href = file.url;
-    link.textContent = file.name;
-    link.className = "file-link";
     link.target = "_blank";
-    li.appendChild(link);
-
-    const downloadLink = document.createElement("a");
-    downloadLink.href = file.url;
-    downloadLink.download = file.url.split("/").pop();
-    downloadLink.textContent = "Download";
-    downloadLink.className = "download-link";
-    li.appendChild(downloadLink);
-
-    return li;
+    const img = document.createElement("img");
+    img.src = file.url;
+    link.appendChild(img);
+    thumbnail.appendChild(link);
+  } else if (file.type === "document" && file.url.endsWith('.txt')) {
+    const iframe = document.createElement("iframe");
+    iframe.src = file.url;
+    thumbnail.appendChild(iframe);
+  } else {
+    const link = document.createElement("a");
+    link.href = file.url;
+    link.target = "_blank";
+    link.textContent = "Open Document";
+    thumbnail.appendChild(link);
   }
 
-  function renderFiles() {
-    fileList.innerHTML = "";
-    files.forEach(file => {
-      fileList.appendChild(createListItem(file));
-    });
-  }
+  const info = document.createElement("div");
+  info.className = "video-info";
 
-  function filterFiles() {
-    const query = searchInput.value.toLowerCase();
-    Array.from(fileList.children).forEach(li => {
-      const name = li.dataset.name;
-      const type = li.dataset.type;
-      li.style.display = (name.includes(query) || type.includes(query)) ? "" : "none";
-    });
-  }
+  const title = document.createElement("a");
+  title.href = file.url;
+  title.target = "_blank";
+  title.textContent = file.name;
+  title.className = "video-title";
 
-  renderFiles();
+  const download = document.createElement("a");
+  download.href = file.url;
+  download.download = file.url.split("/").pop();
+  download.textContent = "Download";
+  download.className = "download-link";
+
+  info.appendChild(title);
+  info.appendChild(download);
+
+  card.appendChild(thumbnail);
+  card.appendChild(info);
+
+  return card;
+}
+
+function renderFiles() {
+  videoGrid.innerHTML = "";
+  files.forEach(file => {
+    videoGrid.appendChild(createCard(file));
+  });
+}
+
+function filterFiles() {
+  const query = document.getElementById("searchInput").value.toLowerCase();
+  Array.from(videoGrid.children).forEach(card => {
+    const name = card.dataset.name;
+    const type = card.dataset.type;
+    card.style.display = (name.includes(query) || type.includes(query)) ? "" : "none";
+  });
+}
+
+captchaCheck.addEventListener("change", () => {
+  if (captchaCheck.checked) {
+    captchaOverlay.style.display = "none";
+    mainContainer.classList.add("visible");
+    document.body.classList.add("loaded");
+    themeAudio.play().catch(() => {});
+  }
+});
+
+renderFiles();
 </script>
 
 </body>
