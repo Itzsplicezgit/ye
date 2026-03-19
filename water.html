@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Water Pollution Model</title>
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+.section {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(60%);
+  transform: scale(1.1);
+  animation: pan 20s infinite alternate linear;
+}
+@keyframes pan {
+  0% { transform: scale(1.1) translateX(0); }
+  100% { transform: scale(1.1) translateX(-5%); }
+}
+.content {
+  max-width: 800px;
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: all 1s ease;
+}
+.content.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.arrow {
+  position: absolute;
+  bottom: 20px;
+  font-size: 30px;
+  animation: bounce 2s infinite;
+  color: white;
+  cursor: pointer;
+}
+@keyframes bounce {
+  0%,100% { transform: translateY(0);}
+  50% { transform: translateY(10px);}
+}
+.row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.card {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  width: 200px;
+}
+</style>
+</head>
+<body oncopy="return false" oncut="return false" oncontextmenu="return false">
+<section class="section">
+  <img class="bg" src="water/water.jpg">
+  <div class="content">
+    <h1>Water Pollution Systems Model</h1>
+    <p>By Cristian Escobar and Ernesto Flores</p>
+    <p>Use arrow keys to navigate or click the arrow below.</p>  
+  </div>
+  <div class="arrow">⬇</div>
+</section>
+
+<section class="section">
+  <img class="bg" src="water/city.jpg">
+  <div class="content">
+    <h2>Human Activities</h2>
+    <div class="row">
+      <div class="card">Farming uses fertilizers and irrigation that carry nutrients into rivers and lakes and sometimes cause algae to grow too much which changes the ecosystem and harms wildlife</div>
+      <div class="card">Factories release chemicals and waste that can poison water and harm fish birds and other animals and also affect people who use the water for drinking or recreation</div>
+      <div class="card">Power plants discharge warm water into rivers which lowers oxygen levels and makes it harder for some fish and other aquatic life to survive in the area</div>
+      <div class="card">Sewage systems can carry harmful bacteria and organic matter into waterways when not treated properly and this can make animals sick and reduce water quality for humans and wildlife</div>
+    </div>
+  </div>
+  <div class="arrow">⬇</div>
+</section>
+
+<section class="section">
+  <img class="bg" src="water/pollution.jpg">
+  <div class="content">
+    <h2>Pollution Sources</h2>
+    <div class="row">
+      <div class="card"><b>Point Source</b><br>Pollution that comes from one clear place like a pipe from a factory or a drain from a treatment plant can be easier to track but can still be very harmful to the water</div>
+      <div class="card"><b>Nonpoint Source</b><br>Pollution that comes from many different places such as fields streets and lawns spreads over a large area and is harder to control because it mixes into the water along the way</div>
+    </div>
+  </div>
+  <div class="arrow">⬇</div>
+</section>
+
+<section class="section">
+  <img class="bg" src="water/watershed.jpg">
+  <div class="content">
+    <h2>Watershed</h2>
+    <p>A watershed is the land area where rain and streams flow toward rivers and lakes. Water carries soil nutrients and pollutants as it moves across the land. Human activities such as construction farming and road building can change how water flows and increase pollution. Studying watersheds helps people understand how pollution spreads and where changes are needed to protect water quality. Healthy watersheds support plants animals and people and provide clean water for drinking recreation and irrigation over time.</p>
+  </div>
+  <div class="arrow">⬇</div>
+</section>
+
+<section class="section">
+  <img class="bg" src="water/river.jpg">
+  <div class="content">
+    <h2>Movement of Pollutants</h2>
+    <p>Pollution moves downstream with rain surface runoff and streams until it reaches rivers and lakes. Along the way pollution mixes with sediments and affects plants and animals in the water. Understanding how pollution moves helps us predict where it will go and how it will affect wildlife and human communities. This knowledge also helps guide cleanup efforts and water management strategies so that rivers lakes and coastal areas stay healthier for people and animals that rely on them for food water and shelter.</p>
+  </div>
+  <div class="arrow">⬇</div>
+</section>
+
+<section class="section">
+  <img class="bg" src="water/algae.jpg">
+  <div class="content">
+    <h2>Eutrophication</h2>
+    <p>Too many nutrients like nitrogen and phosphorus make algae grow quickly and cover the surface of rivers and lakes. When the algae die and decay oxygen in the water drops and fish and other animals can die. Eutrophication changes the balance of the ecosystem and reduces the variety of life. Controlling nutrient pollution and managing farms and cities carefully helps keep water healthy and supports animals plants and people who depend on clean water and balanced aquatic habitats.</p>
+  </div>
+  <div class="arrow">⬇</div>
+</section>
+
+<section class="section">
+  <img class="bg" src="water/thermal.jpg">
+  <div class="content">
+    <h2>Environmental Processes</h2>
+    <div class="row">
+      <div class="card">Thermal Pollution happens when industries or power plants release warm water into rivers lowering oxygen levels and changing which animals can survive in the area</div>
+      <div class="card">Sewage Treatment removes waste nutrients and bacteria from water but if the system fails pollution can enter rivers and lakes and harm wildlife and humans who depend on clean water</div>
+    </div>
+  </div>
+  <div class="arrow">⬇</div>
+</section>
+
+<section class="section">
+  <img class="bg" src="water/deadfish.jpg">
+  <div class="content">
+    <h2>Ecosystem Impacts</h2>
+    <p>Pollution lowers oxygen in the water kills fish and reduces the variety of plants and animals. It changes the way ecosystems work and can cause long-term damage to rivers lakes and wetlands. When species are lost food chains are affected and nature becomes less resilient to problems like climate change and invasive species. Protecting ecosystems keeps wildlife healthy and ensures that people can continue to rely on clean water fishing and other natural benefits from the environment.</p>
+  </div>
+  <div class="arrow">⬇</div>
+</section>
+
+<section class="section">
+  <img class="bg" src="water/cleanwater.jpg">
+  <div class="content">
+    <h2>Explanation</h2>
+    <p>Human activities release pollutants into freshwater through point sources and widespread sources. Pollution moves through watersheds and affects rivers lakes and coastal areas. It causes problems like low oxygen overgrowth of algae and chemical contamination which harms animals plants and humans. Learning how these processes work helps us manage water better reduce pollution and restore ecosystems. Clean water healthy plants and animals and functioning natural systems depend on careful management and responsible actions by people today and in the future.</p>
+  </div>
+</section>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+document.querySelectorAll(".content").forEach(el => observer.observe(el));
+
+window.addEventListener("load", () => {
+  setTimeout(() => { window.scrollTo(0, 0); }, 50);
+});
+
+const sections = document.querySelectorAll(".section");
+let currentIndex = 0;
+function scrollToSection(index) {
+  if(index >=0 && index < sections.length) {
+    sections[index].scrollIntoView({behavior:"smooth"});
+    currentIndex = index;
+  }
+}
+document.addEventListener("keydown", e => {
+  if(e.key==="ArrowDown") scrollToSection(currentIndex+1);
+  else if(e.key==="ArrowUp") scrollToSection(currentIndex-1);
+});
+document.querySelectorAll(".arrow").forEach((arrow,i)=>{
+  arrow.addEventListener("click",()=>scrollToSection(i+1));
+});
+</script>
+</body>
+</html>
