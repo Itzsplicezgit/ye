@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Game Library</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: #0b0b0b;
+    color: white;
+  }
+
+  .top {
+    display: flex;
+    justify-content: center;
+    padding: 25px 20px 10px;
+  }
+
+  .search {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px 16px;
+    border-radius: 999px;
+    border: none;
+    background: #1a1a1a;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .search::placeholder {
+    color: #888;
+  }
+
+  .wrapper {
+    max-width: 1300px;
+    margin: auto;
+    padding: 10px 20px 40px;
+  }
+
+  .library {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+
+  .game {
+    background: #151515;
+    border-radius: 26px;
+    overflow: hidden;
+    transition: 0.2s ease;
+  }
+
+  .game:hover {
+    transform: translateY(-3px);
+    background: #1c1c1c;
+  }
+
+  .image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #202020;
+  }
+
+  .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .content h3 {
+    margin: 0 0 6px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .content p {
+    margin: 0;
+    font-size: 13px;
+    color: #9a9a9a;
+  }
+
+  .launch-btn {
+    margin-top: 12px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 999px;
+    border: none;
+    background: white;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .launch-btn:hover {
+    background: #e6e6e6;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="top">
+  <input type="text" id="search" class="search" placeholder="Search games">
+</div>
+
+<div class="wrapper">
+  <div class="library" id="library"></div>
+</div>
+
+<script>
+const games = [
+  { title: "Minecraft", desc: "Curent Version 1.8.8 using resent client 5.1", file: "games/minecraft.html", img: "pngs/minecraft.png" },
+  { title: "Roblox", desc: "Not actual roblox unity compiled games", file: "roblox.html", img: "pngs/roblox.png" },
+  { title: "Bad Parenting", desc: "Bad Parenting is a psychological horror game.", file: "games/badp.html", img: "pngs/badp.png" },
+  { title: "Backrooms", desc: "I guess you nocliped here.", file: "games/backrooms.html", img: "pngs/backrooms.png" },
+  { title: "Block Blast", desc: "Destroy blocks to reach a high score.", file: "games/blockblast.html", img: "pngs/block.png" },
+  { title: "Burrito Bison", desc: "It takes some time to load dont close while in dark screen.", file: "games/bb.html", img: "pngs/bb.png" },
+  { title: "Boba Simulator", desc: "Manage recipe, stock, customer satisfaction for cute cats.", file: "games/boba.html", img: "pngs/boba.png" },
+  { title: "Cookie Clicker", desc: "Click cookies to build a cookie empire.", file: "games/cookie.html", img: "pngs/cookie.png" },
+  { title: "Minecraft Bedrock Classic", desc: "Requires touch screen", file: "games/mc.html", img: "pngs/mc.png" },
+  { title: "MotoX3M", desc: "Dont crash alr", file: "games/moto1.html", img: "pngs/moto1.png" },
+  { title: "MotoX3M 2", desc: "Dont crash again alr", file: "games/moto2.html", img: "pngs/moto2.png" },
+  { title: "MotoX3M Spookyland", desc: "This is soooooo scary man.", file: "games/moto3.html", img: "pngs/moto3.png" },
+  { title: "MotoX3M Winter", desc: "What a snowy day aint it?", file: "games/moto4.html", img: "pngs/moto4.png" },
+    
+];
+
+const library = document.getElementById("library");
+
+function renderGames(filter = "") {
+  library.innerHTML = "";
+
+  games
+    .filter(g => g.title.toLowerCase().includes(filter.toLowerCase()))
+    .forEach(game => {
+      const div = document.createElement("div");
+      div.className = "game";
+
+      div.innerHTML = `
+        <div class="image">
+          <img src="${game.img}" alt="${game.title}">
+        </div>
+        <div class="content">
+          <h3>${game.title}</h3>
+          <p>${game.desc}</p>
+          <button class="launch-btn" onclick="launchGame('${game.file}', '${game.title}')">
+            Launch
+          </button>
+        </div>
+      `;
+
+      library.appendChild(div);
+    });
+}
+
+function launchGame(file, title) {
+  if (window.parent) {
+    window.parent.postMessage({
+      type: "launchGame",
+      file: file,
+      title: title
+    }, "*");
+  }
+}
+
+document.getElementById("search").addEventListener("input", e => {
+  renderGames(e.target.value);
+});
+
+renderGames();
+</script>
+
+</body>
+</html>
