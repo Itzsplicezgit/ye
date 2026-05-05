@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Settings</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: #0b0b0b;
+    color: white;
+  }
+
+  .wrapper {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px 20px;
+  }
+
+  .section {
+    background: #151515;
+    border-radius: 24px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .section h2 {
+    margin: 0 0 15px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .info {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.6;
+  }
+
+  .btn {
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 999px;
+    border: none;
+    background: #1f1f1f;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .btn:hover {
+    background: #2a2a2a;
+  }
+
+  .danger {
+    background: #ff4d4d;
+    color: white;
+    font-weight: 600;
+  }
+
+  .danger:hover {
+    background: #e04343;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+  <div class="section">
+    <h2>Data</h2>
+    <div class="info">
+      Clears all saved data including preferences and cache.
+    </div>
+    <button class="btn danger" onclick="clearData()">Clear Data</button>
+  </div>
+
+  <div class="section">
+    <h2>Battery</h2>
+    <div class="info" id="batteryInfo">
+      Loading battery info...
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Device Info</h2>
+    <div class="info" id="deviceInfo"></div>
+  </div>
+
+</div>
+
+<script>
+  function clearData() {
+    localStorage.clear();
+    sessionStorage.clear();
+
+    if (window.parent) {
+      window.parent.postMessage({ type: "clearData" }, "*");
+    }
+
+    location.reload();
+  }
+
+  async function loadBattery() {
+    const el = document.getElementById("batteryInfo");
+
+    if (!navigator.getBattery) {
+      el.innerText = "Battery API not supported on this device.";
+      return;
+    }
+
+    const battery = await navigator.getBattery();
+
+    function update() {
+      el.innerText =
+        "Level: " + Math.round(battery.level * 100) + "%\n" +
+        "Charging: " + (battery.charging ? "Yes" : "No");
+    }
+
+    update();
+
+    battery.addEventListener("levelchange", update);
+    battery.addEventListener("chargingchange", update);
+  }
+
+  function loadDeviceInfo() {
+    const el = document.getElementById("deviceInfo");
+
+    el.innerText =
+      "User Agent: " + navigator.userAgent + "\n\n" +
+      "Platform: " + navigator.platform + "\n" +
+      "Language: " + navigator.language + "\n" +
+      "Cores: " + (navigator.hardwareConcurrency || "Unknown") + "\n" +
+      "Memory: " + (navigator.deviceMemory || "Unknown") + " GB";
+  }
+
+  loadBattery();
+  loadDeviceInfo();
+</script>
+
+</body>
+</html>
